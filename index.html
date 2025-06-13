@@ -61,7 +61,7 @@
         card.className = 'bg-gray-100 dark:bg-gray-800 p-4 rounded shadow text-center transition-all';
         card.innerHTML = `
           <h3 class="text-lg font-bold mb-2">${batch}</h3>
-          <img src="${folder}/thumbnail.jpg" alt="${batch} Thumbnail" class="thumbnail mb-3">
+          <img src="assets/thumbs/${folder.replace(/-/g, '_')}.jpg" alt="${batch} Thumbnail" class="thumbnail mb-3">
           <a href="${folder}/index.html" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded inline-block">Welcome</a>
         `;
         container.appendChild(card);
@@ -84,7 +84,7 @@
         card.className = 'bg-gray-100 dark:bg-gray-800 p-4 rounded shadow text-center transition-all';
         card.innerHTML = `
           <h3 class="text-lg font-bold mb-2">${batch}</h3>
-          <img src="${folder}/thumbnail.jpg" alt="${batch} Thumbnail" class="thumbnail mb-3">
+          <img src="assets/thumbs/${folder.replace(/-/g, '_')}.jpg" alt="${batch} Thumbnail" class="thumbnail mb-3">
           <a href="${folder}/index.html" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded inline-block">Welcome</a>
         `;
         container.appendChild(card);
