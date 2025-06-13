@@ -58,8 +58,12 @@
       allBatches[course].forEach(batch => {
         const card = document.createElement('div');
         card.className = 'bg-gray-100 dark:bg-gray-700 p-4 rounded shadow hover:shadow-lg transition-all';
-        card.innerHTML = `<h3 class="text-lg font-semibold">${batch}</h3>
-                          <p class="text-sm text-gray-700 dark:text-gray-300">Videos & PDFs</p>`;
+        const pageName = batch.replace(/ /g, "_") + ".html";
+card.innerHTML = `
+  <a href="${pageName}">
+    <h3 class="text-lg font-semibold underline">${batch}</h3>
+    <p class="text-sm text-gray-700 dark:text-gray-300">Videos & PDFs</p>
+  </a>`;
         container.appendChild(card);
       });
     }
