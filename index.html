@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study Web App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+  <header class="flex justify-between items-center p-4 shadow-lg bg-gray-800">
+    <h1 class="text-xl font-bold">Study Web App</h1>
+    <div class="flex gap-4">
+      <input id="searchBar" type="text" placeholder="Search batches..." class="rounded px-2 py-1 text-black" oninput="filterBatches()" />
+      <button onclick="toggleDarkMode()" class="px-4 py-2 rounded bg-purple-600 hover:bg-purple-700">Dark Mode</button>
+    </div>
+  </header>
+  <main class="p-4">
+    <h2 class="text-lg font-semibold mb-4">Select a Course</h2>
+    <div class="flex gap-4 mb-6">
+      <button onclick="showBatches('NEET')" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded">NEET</button>
+      <button onclick="showBatches('JEE')" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded">JEE</button>
+    </div>
+    <div id="batches" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
+  </main>
+  <script>
+    const allBatches = {
+      NEET: [
+        "ARJUNA NEET 2026",
+        "ARJUNA NEET 2.0 2026",
+        "LAKSHYA NEET 2026",
+        "LAKSHYA NEET 2.0 2026",
+        "YAKEEN NEET 2026",
+        "YAKEEN NEET 2.0 2026"
+      ],
+      JEE: [
+        "ARJUNA JEE 2026",
+        "ARJUNA JEE 2.0 2026",
+        "LAKSHYA JEE 2026",
+        "LAKSHYA JEE 2.0 2026",
+        "PRAYAS JEE 2026",
+        "PRAYAS JEE 2.0 2026"
+      ]
+    };
+
+    let currentCourse = 'NEET';
+
+    function showBatches(course) {
+      currentCourse = course;
+      renderBatches(course);
+    }
+
+    function renderBatches(course) {
+      const container = document.getElementById('batches');
+      container.innerHTML = '';
+      allBatches[course].forEach(batch => {
+        const card = document.createElement('div');
+        card.className = 'bg-gray-700 p-4 rounded shadow hover:shadow-lg';
+        card.innerHTML = `<h3 class="text-lg font-semibold">${batch}</h3>
+                          <p class="text-sm text-gray-300">Videos & PDFs</p>`;
+        container.appendChild(card);
+      });
+    }
+
+    function filterBatches() {
+      const keyword = document.getElementById('searchBar').value.toLowerCase();
+      const filtered = allBatches[currentCourse].filter(b => b.toLowerCase().includes(keyword));
+      const container = document.getElementById('batches');
+      container.innerHTML = '';
+      filtered.forEach(batch => {
+        const card = document.createElement('div');
+        card.className = 'bg-gray-700 p-4 rounded shadow hover:shadow-lg';
+        card.innerHTML = `<h3 class="text-lg font-semibold">${batch}</h3>
+                          <p class="text-sm text-gray-300">Videos & PDFs</p>`;
+        container.appendChild(card);
+      });
+    }
+
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+    }
+
+    // Load NEET by default
+    renderBatches('NEET');
+  </script>
+</body>
+</html>
