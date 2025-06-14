@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LAKSHYA JEE 2.0 2026</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'class' }</script>
+</head>
+<body class="bg-white text-black dark:bg-gray-900 dark:text-white min-h-screen">
+  <header class="w-full bg-white dark:bg-gray-800 shadow p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">LAKSHYA JEE 2.0 2026</h1>
+    <button onclick="toggleDarkMode()" id="themeToggle" class="p-2 rounded bg-gray-300 dark:bg-gray-700">🌙</button>
+  </header>
+  <main class="p-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <a href="physics/index.html" class="block bg-blue-300 border-blue-600 border text-center p-4 rounded-md transition-all h-36 flex items-center justify-center shadow-md hover:shadow-lg">
+        <h2 class="text-lg font-semibold">Physics</h2>
+      </a>
+      <a href="maths/index.html" class="block bg-yellow-300 border-yellow-600 border text-center p-4 rounded-md transition-all h-36 flex items-center justify-center shadow-md hover:shadow-lg">
+        <h2 class="text-lg font-semibold">Maths</h2>
+      </a>
+      <a href="physical-chemistry/index.html" class="block bg-cyan-300 border-cyan-600 border text-center p-4 rounded-md transition-all h-36 flex items-center justify-center shadow-md hover:shadow-lg">
+        <h2 class="text-lg font-semibold">Physical Chemistry</h2>
+      </a>
+      <a href="organic-chemistry/index.html" class="block bg-red-300 border-red-600 border text-center p-4 rounded-md transition-all h-36 flex items-center justify-center shadow-md hover:shadow-lg">
+        <h2 class="text-lg font-semibold">Organic Chemistry</h2>
+      </a>
+      <a href="inorganic-chemistry/index.html" class="block bg-purple-300 border-purple-600 border text-center p-4 rounded-md transition-all h-36 flex items-center justify-center shadow-md hover:shadow-lg">
+        <h2 class="text-lg font-semibold">Inorganic Chemistry</h2>
+      </a>
+    </div>
+  </main>
+  <script>
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+      const btn = document.getElementById('themeToggle');
+      btn.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
+    }
+  </script>
+</body>
+</html>
