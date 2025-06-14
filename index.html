@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,16 +9,43 @@
     tailwind.config = { darkMode: 'class' };
   </script>
   <style>
+  .theme-transition {
+    position: relative;
+    overflow: hidden;
+  }
+  .theme-ripple::before {
+    content: "";
+    position: absolute;
+    top: var(--ripple-y);
+    left: var(--ripple-x);
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%);
+    background: currentColor;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: ripple-expand 0.6s ease-out forwards;
+    z-index: 999;
+  }
+  @keyframes ripple-expand {
+    to {
+      width: 200vmax;
+      height: 200vmax;
+      opacity: 0;
+    }
+  }
+  </style>
+  <style>
     .transition-all { transition: all 0.3s ease-in-out; }
     .thumbnail { width: 100%; max-width: 800px; border-radius: 10px; }
   </style>
 </head>
-<body class="bg-white text-black dark:bg-gray-900 dark:text-white min-h-screen transition-all">
+<body id="themeBody" class="theme-transition bg-white text-black dark:bg-gray-900 dark:text-white min-h-screen transition-all">
   <header class="w-full bg-white dark:bg-gray-800 shadow p-4 flex flex-col items-center">
     <h1 class="text-2xl font-bold mb-2 text-center">AaRAv OffiCiaL</h1>
     <div class="flex flex-col sm:flex-row gap-3 w-full max-w-xl justify-center items-center">
       <input id="searchBar" type="text" placeholder="Search batches..." class="w-full sm:w-auto flex-1 rounded px-3 py-2 text-black" oninput="filterBatches()" />
-      <button onclick="toggleDarkMode()" id="themeToggle" class="p-2 rounded bg-gray-300 dark:bg-gray-700 transition-all">🌙</button>
+      <button onclick="toggleDarkMode(event)" id="themeToggle" class="p-2 rounded bg-gray-300 dark:bg-gray-700 transition-all">🌙</button>
     </div>
   </header>
 
@@ -91,10 +117,24 @@
       });
     }
 
-    function toggleDarkMode() {
-      document.documentElement.classList.toggle('dark');
-      const btn = document.getElementById('themeToggle');
-      btn.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
+    function toggleDarkMode(e) {
+  const body = document.getElementById('themeBody');
+  const x = e.clientX || window.innerWidth / 2;
+  const y = e.clientY || window.innerHeight / 2;
+
+  body.style.setProperty('--ripple-x', `${x}px`);
+  body.style.setProperty('--ripple-y', `${y}px`);
+  body.classList.add('theme-ripple');
+
+  setTimeout(() => {
+    document.documentElement.classList.toggle('dark');
+    const btn = document.getElementById('themeToggle');
+    btn.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
+  }, 50);
+
+  setTimeout(() => {
+    body.classList.remove('theme-ripple');
+  }, 700);
     }
 
     // Load NEET by default
