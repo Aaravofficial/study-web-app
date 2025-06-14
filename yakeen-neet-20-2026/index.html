@@ -6,8 +6,37 @@
   <title>YAKEEN NEET 2.0 2026</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config = { darkMode: 'class' }</script>
+  <style>
+  .theme-transition {
+    position: relative;
+  }
+  .theme-ripple {
+    overflow: hidden;
+  }
+  .theme-ripple::before {
+    content: "";
+    position: absolute;
+    top: var(--ripple-y);
+    left: var(--ripple-x);
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%);
+    background: currentColor;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: ripple-expand 1.2s ease-out forwards;
+    z-index: 999;
+  }
+  @keyframes ripple-expand {
+    to {
+      width: 200vmax;
+      height: 200vmax;
+      opacity: 0;
+    }
+  }
+  </style>
 </head>
-<body class="bg-white text-black dark:bg-gray-900 dark:text-white min-h-screen">
+<body id="themeBody" class="theme-transition bg-white text-black dark:bg-gray-900 dark:text-white min-h-screen">
   <header class="w-full bg-white dark:bg-gray-800 shadow p-4 flex justify-between items-center">
     <h1 class="text-xl font-bold">YAKEEN NEET 2.0 2026</h1>
     <button onclick="toggleDarkMode()" id="themeToggle" class="p-2 rounded bg-gray-300 dark:bg-gray-700">🌙</button>
@@ -54,10 +83,24 @@
     </div>
   </main>
   <script>
-    function toggleDarkMode() {
-      document.documentElement.classList.toggle('dark');
-      const btn = document.getElementById('themeToggle');
-      btn.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
+    function toggleDarkMode(e) {
+  const body = document.getElementById('themeBody');
+  const x = e.clientX || window.innerWidth / 2;
+  const y = e.clientY || window.innerHeight / 2;
+
+  body.style.setProperty('--ripple-x', `${x}px`);
+  body.style.setProperty('--ripple-y', `${y}px`);
+  body.classList.add('theme-ripple');
+
+  setTimeout(() => {
+    document.documentElement.classList.toggle('dark');
+    const btn = document.getElementById('themeToggle');
+    btn.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
+  }, 200);
+
+  setTimeout(() => {
+    body.classList.remove('theme-ripple');
+  }, 700);
     }
   </script>
 </body>
