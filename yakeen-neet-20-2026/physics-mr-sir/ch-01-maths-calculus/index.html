@@ -30,17 +30,26 @@
         opacity: 0;
       }
     }
+    .neon-border {
+      border: 2px solid #6b21a8;
+      box-shadow: 0 0 8px #6b21a8;
+    }
   </style>
 </head>
 <body id="themeBody" class="theme-transition bg-white text-black dark:bg-gray-900 dark:text-white min-h-screen">
 
-  <header class="w-full p-4 bg-white dark:bg-gray-800 shadow flex justify-between items-center">
-    <button onclick="history.back()" class="bg-purple-600 text-white px-4 py-1 rounded">Back</button>
-    <h1 class="text-xl font-bold text-center">Ch-01 : Basic Maths and Calculus</h1>
-    <button onclick="toggleDarkMode(event)" id="themeToggle" class="p-2 rounded bg-gray-300 dark:bg-gray-700">🌙</button>
-  </header>
+  <header class="p-4">
+    <h1 class="text-2xl font-bold text-center mb-4">YAKEEN NEET 2.0 2026</h1>
 
-  <main class="p-4">
+    <div class="flex justify-between items-center mb-4">
+      <button onclick="history.back()" class="bg-purple-900 text-white px-4 py-1 rounded shadow-lg">⬅ Back</button>
+      <button onclick="toggleDarkMode(event)" id="themeToggle" class="p-2 rounded bg-gray-300 dark:bg-gray-700 shadow-lg">🌙</button>
+    </div>
+
+    <div class="max-w-md mx-auto mb-6">
+      <input id="searchBar" oninput="filterContent()" placeholder="Search titles..." class="w-full p-2 rounded neon-border shadow" />
+    </div>
+
     <div class="max-w-xl mx-auto mb-4">
       <select id="contentSelect" onchange="renderContent()" class="w-full p-2 rounded border border-purple-600 text-black dark:text-white bg-white dark:bg-gray-800">
         <option value="lectures">Lectures</option>
@@ -49,7 +58,9 @@
         <option value="dppVideos">DPP Videos</option>
       </select>
     </div>
+  </header>
 
+  <main class="p-4">
     <div id="contentArea" class="grid gap-4 max-w-2xl mx-auto"></div>
   </main>
 
@@ -87,12 +98,15 @@
 
     function renderContent() {
       const type = document.getElementById("contentSelect").value;
+      const keyword = document.getElementById("searchBar").value.toLowerCase();
       const area = document.getElementById("contentArea");
       area.innerHTML = "";
 
       contentData[type].forEach(item => {
+        if (!item.title.toLowerCase().includes(keyword)) return;
+
         let card = document.createElement("div");
-        card.className = "p-4 bg-white dark:bg-gray-800 rounded shadow";
+        card.className = "p-4 bg-white dark:bg-gray-800 rounded shadow-lg";
 
         if (item.video) {
           card.innerHTML = `
@@ -112,6 +126,10 @@
 
         area.appendChild(card);
       });
+    }
+
+    function filterContent() {
+      renderContent();
     }
 
     function toggleDarkMode(e) {
