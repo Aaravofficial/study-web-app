@@ -45,25 +45,32 @@
 <body id="themeBody" class="theme-transition bg-white text-black dark:bg-gray-900 dark:text-white min-h-screen">
 
   <header class="p-4">
-    <h1 class="text-2xl font-bold text-center mb-4">YAKEEN NEET 2.0 2026</h1>
+  <!-- Top Title -->
+  <h1 class="text-3xl font-bold text-center mb-4">AaRAv OffiCiaL</h1>
 
-    <div class="flex justify-between items-center mb-4">
-      <button onclick="history.back()" class="bg-purple-900 text-white px-4 py-1 rounded shadow-lg">⬅ Back</button>
-      <button onclick="toggleDarkMode(event)" id="themeToggle" class="p-2 rounded bg-gray-300 dark:bg-gray-700 shadow-lg">🌙</button>
-    </div>
+  <!-- Back & Toggle Buttons -->
+  <div class="flex justify-between items-center mb-4">
+    <button onclick="history.back()" class="bg-purple-900 text-white px-4 py-1 rounded shadow-lg">⬅ Back</button>
+    <button onclick="toggleDarkMode(event)" id="themeToggle" class="w-16 p-2 rounded bg-gray-300 dark:bg-gray-700 shadow-lg">🌙</button>
+  </div>
 
-    <div class="max-w-md mx-auto mb-6">
-      <input id="searchBar" oninput="filterContent()" placeholder="Search titles..." class="w-full p-2 rounded border border-purple-800 shadow-lg bg-white dark:bg-gray-800 text-black dark:text-white" />
-    </div>
+  <!-- Chapter Title -->
+  <h2 class="text-xl font-semibold text-center mb-4">Ch-01 : Basic Maths & Calculus</h2>
 
-    <div class="max-w-xl mx-auto mb-4">
-      <select id="contentSelect" onchange="renderContent()" class="w-full p-2 rounded border border-blue-800 text-black dark:text-white bg-white dark:bg-gray-800 shadow-lg">
-        <option value="lectures">Lectures</option>
-        <option value="notes" selected>Notes</option>
-        <option value="dpps">DPPs</option>
-        <option value="dppVideos">DPP Videos</option>
-      </select>
-    </div>
+  <!-- Search Bar -->
+  <div class="max-w-md mx-auto mb-6">
+    <input id="searchBar" oninput="filterContent()" placeholder="Search titles..." class="w-full p-2 rounded border border-purple-800 shadow-lg bg-white dark:bg-gray-800 text-black dark:text-white" />
+  </div>
+
+  <!-- Select Menu -->
+  <div class="max-w-xl mx-auto mb-4">
+    <select id="contentSelect" onchange="renderContent()" class="w-full p-2 rounded border border-blue-800 text-black dark:text-white bg-white dark:bg-gray-800 shadow-lg">
+      <option value="lectures">Lectures</option>
+      <option value="notes" selected>Notes</option>
+      <option value="dpps">DPPs</option>
+      <option value="dppVideos">DPP Videos</option>
+    </select>
+  </div>
   </header>
 
   <main class="p-4">
@@ -86,7 +93,7 @@
         { title: "Basic Maths & Calculus 01 : Class Notes || Physics : MR Sir", pdf: "notes/aarav01.pdf" },
         { title: "Basic Maths & Calculus 02 : Class Notes || Physics : MR Sir", pdf: "notes/aarav02.pdf" },
         { title: "Basic Maths & Calculus 03 : Class Notes || Physics : MR Sir", pdf: "notes/aarav03.pdf" },
-        { title: "Basic Maths & Calculus 04 : Class Notes || Physics : MR Sir", pdf: "notes/aarav04.pdf" },
+        { title: "Basic Maths & Calculus 04 : lass Notes || Physics : MR Sir", pdf: "notes/aarav04.pdf" },
         { title: "Basic Maths & Calculus 05 : Class Notes || Physics : MR Sir", pdf: "notes/aarav05.pdf" },
         { title: "Basic Maths & Calculus 06 : Class Notes || Physics : MR Sir", pdf: "notes/aarav06.pdf" },
         { title: "Basic Maths & Calculus 07 : Class Notes || Physics : MR Sir", pdf: "notes/aarav07.pdf" },
