@@ -32,7 +32,7 @@
     }
     .neon-border {
       border: 2px solid #6b21a8;
-      box-shadow: 0 0 8px #6b21a8;
+      box-shadow: 0 0 10px #6b21a8;
     }
   </style>
 </head>
@@ -46,12 +46,14 @@
       <button onclick="toggleDarkMode(event)" id="themeToggle" class="p-2 rounded bg-gray-300 dark:bg-gray-700 shadow-lg">🌙</button>
     </div>
 
+    <!-- Search Bar -->
     <div class="max-w-md mx-auto mb-6">
-      <input id="searchBar" oninput="filterContent()" placeholder="Search titles..." class="w-full p-2 rounded neon-border shadow" />
+      <input id="searchBar" oninput="filterContent()" placeholder="Search titles..." class="w-full p-2 rounded neon-border shadow-lg bg-white dark:bg-gray-800 text-black dark:text-white" />
     </div>
 
+    <!-- Select Dropdown -->
     <div class="max-w-xl mx-auto mb-4">
-      <select id="contentSelect" onchange="renderContent()" class="w-full p-2 rounded border border-purple-600 text-black dark:text-white bg-white dark:bg-gray-800">
+      <select id="contentSelect" onchange="renderContent()" class="w-full p-2 rounded border border-blue-800 text-black dark:text-white bg-white dark:bg-gray-800 shadow-lg">
         <option value="lectures">Lectures</option>
         <option value="notes">Notes</option>
         <option value="dpps">DPPs</option>
