@@ -51,16 +51,19 @@
       <button onclick="toggleDarkMode(event)" id="themeToggle" class="p-2 rounded bg-gray-300 dark:bg-gray-700 transition-all">🌙</button>
     </div>
   </header>
+  <div class="w-full flex justify-center">
   <input
-  id="searchBar"
-  type="text"
-  placeholder="Search batches..."
-  oninput="filterBatches()"
-  class="w-full sm:w-auto flex-1 rounded px-3 py-2 text-black border border-cyan-500 
-         dark:border-cyan-400 shadow-[3px_3px_10px_rgba(0,0,0,0.5)] 
-         hover:shadow-[6px_6px_14px_rgba(0,0,0,0.3)] 
-         transition-all outline-none"
-/>
+    id="searchBar"
+    type="text"
+    placeholder="Search batches..."
+    oninput="filterBatches()"
+    class="w-full sm:w-[400px] max-w-xl rounded px-4 py-2 text-black 
+           border border-cyan-500 dark:border-cyan-400 
+           shadow-[3px_3px_10px_rgba(0,0,0,0.5)] 
+           hover:shadow-[6px_6px_14px_rgba(0,0,0,0.3)] 
+           transition-all outline-none"
+  />
+  </div>
   <main class="pt-6 p-4">
     <h2 class="text-lg font-semibold mb-4 text-center">Select a Course</h2>
     <div class="flex flex-wrap gap-4 mb-6 justify-center">
