@@ -30,9 +30,15 @@
         opacity: 0;
       }
     }
-    .neon-border {
+    .neon-download {
       border: 2px solid #6b21a8;
       box-shadow: 0 0 10px #6b21a8;
+      transition: transform 0.2s ease;
+    }
+    .neon-download:hover {
+      transform: translateY(-2px);
+      background-color: #6b21a8;
+      color: white;
     }
   </style>
 </head>
@@ -47,7 +53,7 @@
     </div>
 
     <div class="max-w-md mx-auto mb-6">
-      <input id="searchBar" oninput="filterContent()" placeholder="Search titles..." class="w-full p-2 rounded neon-border shadow-lg bg-white dark:bg-gray-800 text-black dark:text-white" />
+      <input id="searchBar" oninput="filterContent()" placeholder="Search titles..." class="w-full p-2 rounded border border-purple-800 shadow-lg bg-white dark:bg-gray-800 text-black dark:text-white" />
     </div>
 
     <div class="max-w-xl mx-auto mb-4">
@@ -94,20 +100,8 @@
         { title: "Basic Maths & Calculus 15 : Class Notes || Physics : MR Sir", pdf: "notes/aarav15.pdf" },
         { title: "Basic Maths & Calculus Summary Lecture : Class Notes || Physics : MR Sir", pdf: "notes/aarav16.pdf" }
       ],
-      dpps: [
-        { title: "DPP 01", pdf: "dpp/dpp01.pdf" },
-        { title: "DPP 02", pdf: "dpp/dpp02.pdf" }
-      ],
-      dppVideos: [
-        {
-          title: "DPP 01 Video",
-          video: "https://www.youtube.com/embed/YOUR_VIDEO_ID_3"
-        },
-        {
-          title: "DPP 02 Video",
-          video: "https://www.youtube.com/embed/YOUR_VIDEO_ID_4"
-        }
-      ]
+      dpps: [],
+      dppVideos: []
     };
 
     function renderContent() {
@@ -120,21 +114,21 @@
         if (!item.title.toLowerCase().includes(keyword)) return;
 
         let card = document.createElement("div");
-        card.className = "p-4 bg-white dark:bg-gray-800 rounded shadow-lg";
+        card.className = "p-4 bg-white dark:bg-gray-800 rounded shadow-lg flex justify-between items-center";
 
         if (item.video) {
           card.innerHTML = `
-            <p class="font-semibold mb-2">${item.title}</p>
-            <div class="aspect-w-16 aspect-h-9">
-              <iframe src="${item.video}" frameborder="0" allowfullscreen class="w-full rounded"></iframe>
+            <div class="w-full">
+              <p class="font-semibold mb-2">${item.title}</p>
+              <div class="aspect-w-16 aspect-h-9">
+                <iframe src="${item.video}" frameborder="0" allowfullscreen class="w-full rounded"></iframe>
+              </div>
             </div>
           `;
         } else if (item.pdf) {
           card.innerHTML = `
-            <div class="flex items-center justify-between gap-4">
-              <p class="font-medium flex-1">${item.title}</p>
-              <a href="${item.pdf}" download class="text-purple-600 text-2xl hover:text-purple-800 transition" title="Download PDF">⬇️</a>
-            </div>
+            <a href="${item.pdf}" target="_blank" class="flex-1 font-medium hover:underline">${item.title}</a>
+            <a href="${item.pdf}" download class="ml-4 text-purple-700 neon-download px-3 py-1 rounded-full">⬇️</a>
           `;
         }
 
