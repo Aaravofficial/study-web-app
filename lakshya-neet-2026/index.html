@@ -6,40 +6,96 @@
   <title>LAKSHYA NEET 2026</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config = { darkMode: 'class' }</script>
+  <style>
+    .theme-transition {
+      position: relative;
+    }
+    .theme-ripple {
+      overflow: hidden;
+    }
+    .theme-ripple::before {
+      content: "";
+      position: absolute;
+      top: var(--ripple-y);
+      left: var(--ripple-x);
+      width: 0;
+      height: 0;
+      transform: translate(-50%, -50%);
+      background: currentColor;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: ripple-expand 1.2s ease-out forwards;
+      z-index: 999;
+    }
+    @keyframes ripple-expand {
+      to {
+        width: 200vmax;
+        height: 200vmax;
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
-<body class="bg-white text-black dark:bg-gray-900 dark:text-white min-h-screen">
+<body id="themeBody" class="theme-transition bg-white text-black dark:bg-gray-900 dark:text-white min-h-screen">
   <header class="w-full bg-white dark:bg-gray-800 shadow p-4 flex justify-between items-center">
     <h1 class="text-xl font-bold">LAKSHYA NEET 2026</h1>
-    <button onclick="toggleDarkMode()" id="themeToggle" class="p-2 rounded bg-gray-300 dark:bg-gray-700">🌙</button>
+    <button onclick="toggleDarkMode(event)" id="themeToggle" class="p-2 rounded bg-gray-300 dark:bg-gray-700">🌙</button>
   </header>
+
   <main class="p-6">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      
-      <a href="physics/index.html" class="block bg-gray-300 dark:bg-gray-900 border-blue-600 border text-center p-4 rounded-md transition-all h-28 flex items-center justify-center [box-shadow:3px_3px_10px_rgba(0,0,0,0.6)] hover:[box-shadow:7px_7px_15px_rgba(0,0,0,0.25)]">
+      <a href="physics/index.html" class="block bg-gray-300 dark:bg-gray-900 border-blue-600 border text-center p-4 rounded-md transition-all h-28 flex items-center justify-center 
+      [box-shadow:3px_3px_10px_rgba(0,0,0,0.6)] 
+      hover:[box-shadow:7px_7px_15px_rgba(0,0,0,0.25)]">
         <h2 class="text-lg font-semibold text-black dark:text-white">Physics</h2>
       </a>
-      <a href="botany/index.html" class="block bg-gray-300 dark:bg-gray-900 border-green-600 border text-center p-4 rounded-md transition-all h-28 flex items-center justify-center [box-shadow:3px_3px_10px_rgba(0,0,0,0.6)] hover:[box-shadow:7px_7px_15px_rgba(0,0,0,0.25)]">
+      <a href="botany/index.html" class="block bg-gray-300 dark:bg-gray-900 border-green-600 border text-center p-4 rounded-md transition-all h-28 flex items-center justify-center 
+      [box-shadow:3px_3px_10px_rgba(0,0,0,0.6)] 
+      hover:[box-shadow:7px_7px_15px_rgba(0,0,0,0.25)]">
         <h2 class="text-lg font-semibold text-black dark:text-white">Botany</h2>
       </a>
-      <a href="zoology/index.html" class="block bg-gray-300 dark:bg-gray-900 border-pink-600 border text-center p-4 rounded-md transition-all h-28 flex items-center justify-center [box-shadow:3px_3px_10px_rgba(0,0,0,0.6)] hover:[box-shadow:7px_7px_15px_rgba(0,0,0,0.25)]">
+      <a href="zoology/index.html" class="block bg-gray-300 dark:bg-gray-900 border-pink-600 border text-center p-4 rounded-md transition-all h-28 flex items-center justify-center 
+      [box-shadow:3px_3px_10px_rgba(0,0,0,0.6)] 
+      hover:[box-shadow:7px_7px_15px_rgba(0,0,0,0.25)]">
         <h2 class="text-lg font-semibold text-black dark:text-white">Zoology</h2>
       </a>
-      <a href="physical-chemistry/index.html" class="block bg-gray-300 dark:bg-gray-900 border-cyan-600 border text-center p-4 rounded-md transition-all h-28 flex items-center justify-center [box-shadow:3px_3px_10px_rgba(0,0,0,0.6)] hover:[box-shadow:7px_7px_15px_rgba(0,0,0,0.25)]">
+      <a href="physical-chemistry/index.html" class="block bg-gray-300 dark:bg-gray-900 border-cyan-600 border text-center p-4 rounded-md transition-all h-28 flex items-center justify-center 
+      [box-shadow:3px_3px_10px_rgba(0,0,0,0.6)] 
+      hover:[box-shadow:7px_7px_15px_rgba(0,0,0,0.25)]">
         <h2 class="text-lg font-semibold text-black dark:text-white">Physical Chemistry</h2>
       </a>
-      <a href="organic-chemistry/index.html" class="block bg-gray-300 dark:bg-gray-900 border-red-600 border text-center p-4 rounded-md transition-all h-28 flex items-center justify-center [box-shadow:3px_3px_10px_rgba(0,0,0,0.6)] hover:[box-shadow:7px_7px_15px_rgba(0,0,0,0.25)]">
+      <a href="organic-chemistry/index.html" class="block bg-gray-300 dark:bg-gray-900 border-red-600 border text-center p-4 rounded-md transition-all h-28 flex items-center justify-center 
+      [box-shadow:3px_3px_10px_rgba(0,0,0,0.6)] 
+      hover:[box-shadow:7px_7px_15px_rgba(0,0,0,0.25)]">
         <h2 class="text-lg font-semibold text-black dark:text-white">Organic Chemistry</h2>
       </a>
-      <a href="inorganic-chemistry/index.html" class="block bg-gray-300 dark:bg-gray-900 border-purple-600 border text-center p-4 rounded-md transition-all h-28 flex items-center justify-center [box-shadow:3px_3px_10px_rgba(0,0,0,0.6)] hover:[box-shadow:7px_7px_15px_rgba(0,0,0,0.25)]">
+      <a href="inorganic-chemistry/index.html" class="block bg-gray-300 dark:bg-gray-900 border-purple-600 border text-center p-4 rounded-md transition-all h-28 flex items-center justify-center 
+      [box-shadow:3px_3px_10px_rgba(0,0,0,0.6)] 
+      hover:[box-shadow:7px_7px_15px_rgba(0,0,0,0.25)]">
         <h2 class="text-lg font-semibold text-black dark:text-white">Inorganic Chemistry</h2>
       </a>
     </div>
   </main>
+
   <script>
-    function toggleDarkMode() {
-      document.documentElement.classList.toggle('dark');
-      const btn = document.getElementById('themeToggle');
-      btn.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
+    function toggleDarkMode(e) {
+      const body = document.getElementById('themeBody');
+      const x = e.clientX || window.innerWidth / 2;
+      const y = e.clientY || window.innerHeight / 2;
+
+      body.style.setProperty('--ripple-x', `${x}px`);
+      body.style.setProperty('--ripple-y', `${y}px`);
+      body.classList.add('theme-ripple');
+
+      setTimeout(() => {
+        document.documentElement.classList.toggle('dark');
+        const btn = document.getElementById('themeToggle');
+        btn.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
+      }, 200);
+
+      setTimeout(() => {
+        body.classList.remove('theme-ripple');
+      }, 700);
     }
   </script>
 </body>
