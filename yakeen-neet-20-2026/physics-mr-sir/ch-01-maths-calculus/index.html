@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ch-01: Basic Maths and Calculus</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config = { darkMode: 'class' }</script>
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
   <style>
     .theme-transition { position: relative; }
     .theme-ripple { overflow: hidden; }
@@ -33,6 +35,19 @@
     .neon-border {
       border: 2px solid #6b21a8;
       box-shadow: 0 0 10px #6b21a8;
+    }
+    .neon-icon {
+      border: 1px solid #9f00ff;
+      box-shadow: 0 0 6px #9f00ff;
+      color: #9f00ff;
+      font-size: 1.25rem;
+      border-radius: 50%;
+      padding: 6px;
+      transition: transform 0.2s ease;
+    }
+    .neon-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px #9f00ff, inset 0 0 4px #9f00ff;
     }
   </style>
 </head>
@@ -77,23 +92,23 @@
         }
       ],
       notes: [
-  { title: "Basic Maths & Calculus (Mathematical Tools) 01 : Class Notes || Physics : MR Sir", pdf: "notes/aarav01.pdf" },
-  { title: "Basic Maths & Calculus (Mathematical Tools) 02 : Class Notes || Physics : MR Sir", pdf: "notes/aarav02.pdf" },
-  { title: "Basic Maths & Calculus (Mathematical Tools) 03 : Class Notes || Physics : MR Sir", pdf: "notes/aarav03.pdf" },
-  { title: "Basic Maths & Calculus (Mathematical Tools) 04 : Class Notes || Physics : MR Sir", pdf: "notes/aarav04.pdf" },
-  { title: "Basic Maths & Calculus (Mathematical Tools) 05 : Class Notes || Physics : MR Sir", pdf: "notes/aarav05.pdf" },
-  { title: "Basic Maths & Calculus (Mathematical Tools) 06 : Class Notes || Physics : MR Sir", pdf: "notes/aarav06.pdf" },
-  { title: "Basic Maths & Calculus (Mathematical Tools) 07 : Class Notes || Physics : MR Sir", pdf: "notes/aarav07.pdf" },
-  { title: "Basic Maths & Calculus (Mathematical Tools) 08 : Class Notes || Physics : MR Sir", pdf: "notes/aarav08.pdf" },
-  { title: "Basic Maths & Calculus (Mathematical Tools) 09 : Class Notes || Physics : MR Sir", pdf: "notes/aarav09.pdf" },
-  { title: "Basic Maths & Calculus (Mathematical Tools) 10 : Class Notes || Physics : MR Sir", pdf: "notes/aarav10.pdf" },
-  { title: "Basic Maths & Calculus (Mathematical Tools) 11 : Class Notes || Physics : MR Sir", pdf: "notes/aarav11.pdf" },
-  { title: "Basic Maths & Calculus (Mathematical Tools) 12 : Class Notes || Physics : MR Sir", pdf: "notes/aarav12.pdf" },
-  { title: "Basic Maths & Calculus (Mathematical Tools) 13 : Class Notes || Physics : MR Sir", pdf: "notes/aarav13.pdf" },
-  { title: "Basic Maths & Calculus (Mathematical Tools) 14 : Class Notes || Physics : MR Sir", pdf: "notes/aarav14.pdf" },
-  { title: "Basic Maths & Calculus (Mathematical Tools) 15 : Class Notes || Physics : MR Sir", pdf: "notes/aarav15.pdf" },
-  { title: "Basic Maths & Calculus (Mathematical Tools) Summary Lecture Class Notes || Physics : MR Sir", pdf: "notes/aarav16.pdf" }
-],
+        { title: "Basic Maths & Calculus (Mathematical Tools) 01 : Class Notes || Physics : MR Sir", pdf: "notes/aarav01.pdf" },
+        { title: "Basic Maths & Calculus (Mathematical Tools) 02 : Class Notes || Physics : MR Sir", pdf: "notes/aarav02.pdf" },
+        { title: "Basic Maths & Calculus (Mathematical Tools) 03 : Class Notes || Physics : MR Sir", pdf: "notes/aarav03.pdf" },
+        { title: "Basic Maths & Calculus (Mathematical Tools) 04 : Class Notes || Physics : MR Sir", pdf: "notes/aarav04.pdf" },
+        { title: "Basic Maths & Calculus (Mathematical Tools) 05 : Class Notes || Physics : MR Sir", pdf: "notes/aarav05.pdf" },
+        { title: "Basic Maths & Calculus (Mathematical Tools) 06 : Class Notes || Physics : MR Sir", pdf: "notes/aarav06.pdf" },
+        { title: "Basic Maths & Calculus (Mathematical Tools) 07 : Class Notes || Physics : MR Sir", pdf: "notes/aarav07.pdf" },
+        { title: "Basic Maths & Calculus (Mathematical Tools) 08 : Class Notes || Physics : MR Sir", pdf: "notes/aarav08.pdf" },
+        { title: "Basic Maths & Calculus (Mathematical Tools) 09 : Class Notes || Physics : MR Sir", pdf: "notes/aarav09.pdf" },
+        { title: "Basic Maths & Calculus (Mathematical Tools) 10 : Class Notes || Physics : MR Sir", pdf: "notes/aarav10.pdf" },
+        { title: "Basic Maths & Calculus (Mathematical Tools) 11 : Class Notes || Physics : MR Sir", pdf: "notes/aarav11.pdf" },
+        { title: "Basic Maths & Calculus (Mathematical Tools) 12 : Class Notes || Physics : MR Sir", pdf: "notes/aarav12.pdf" },
+        { title: "Basic Maths & Calculus (Mathematical Tools) 13 : Class Notes || Physics : MR Sir", pdf: "notes/aarav13.pdf" },
+        { title: "Basic Maths & Calculus (Mathematical Tools) 14 : Class Notes || Physics : MR Sir", pdf: "notes/aarav14.pdf" },
+        { title: "Basic Maths & Calculus (Mathematical Tools) 15 : Class Notes || Physics : MR Sir", pdf: "notes/aarav15.pdf" },
+        { title: "Basic Maths & Calculus (Mathematical Tools) Summary Lecture Class Notes || Physics : MR Sir", pdf: "notes/aarav16.pdf" }
+      ],
       dpps: [
         { title: "DPP 01", pdf: "dpp/dpp01.pdf" },
         { title: "DPP 02", pdf: "dpp/dpp02.pdf" }
@@ -131,13 +146,10 @@
           `;
         } else if (item.pdf) {
           card.innerHTML = `
-            <div class="flex justify-between items-center">
-              <p class="font-medium">${item.title}</p>
-              <div>
-                <a href="${item.pdf}" target="_blank" class="text-purple-600 text-sm underline mr-2">📄 View</a>
-                <a href="${item.pdf}" download class="text-purple-600 text-sm underline">⬇ Download</a>
-              </div>
-            </div>
+            <a href="${item.pdf}" target="_blank" class="flex justify-between items-center no-underline group">
+              <p class="font-medium text-black dark:text-white group-hover:underline">${item.title}</p>
+              <a href="${item.pdf}" download title="Download PDF" class="neon-icon ml-4">⬇️</a>
+            </a>
           `;
         }
 
