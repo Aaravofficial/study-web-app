@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ch-03: Units & Measurements</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'class' }</script>
+  <style>
+    .theme-transition { position: relative; }
+    .theme-ripple { overflow: hidden; }
+    .theme-ripple::before {
+      content: "";
+      position: absolute;
+      top: var(--ripple-y);
+      left: var(--ripple-x);
+      width: 0;
+      height: 0;
+      transform: translate(-50%, -50%);
+      background: currentColor;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: ripple-expand 1.2s ease-out forwards;
+      z-index: 999;
+    }
+    @keyframes ripple-expand {
+      to {
+        width: 200vmax;
+        height: 200vmax;
+        opacity: 0;
+      }
+    }
+    .neon-download {
+      border: 1px solid #6b21a8;
+      box-shadow: 0 0 10px #6b21a8;
+      transition: transform 0.2s ease;
+    }
+    .neon-download:hover {
+      transform: translateY(-2px);
+      background-color: #6b21a8;
+      color: white;
+    }
+  </style>
+</head>
+<body id="themeBody" class="theme-transition bg-white text-black dark:bg-gray-900 dark:text-white min-h-screen">
+
+  <header class="p-4">
+    <h1 class="text-3xl font-bold text-center mb-4">AaRAv OffiCiaL</h1>
+
+    <div class="flex justify-between items-center mb-4">
+      <button onclick="history.back()" class="bg-purple-900 text-white px-4 py-1 rounded shadow-lg">⬅ Back</button>
+      <button onclick="toggleDarkMode(event)" id="themeToggle" class="w-16 p-2 rounded bg-gray-300 dark:bg-gray-700 shadow-lg">🌙</button>
+    </div>
+
+    <h2 class="text-xl font-semibold text-center mb-4">Ch-03 : Units & Measurements</h2>
+
+    <div class="max-w-md mx-auto mb-6">
+      <input id="searchBar" oninput="filterContent()" placeholder="Search titles..." class="w-full p-2 rounded border border-purple-800 shadow-lg bg-white dark:bg-gray-800 text-black dark:text-white" />
+    </div>
+
+    <div class="max-w-xl mx-auto mb-4">
+      <select id="contentSelect" onchange="renderContent()" class="w-full p-2 rounded border border-blue-800 text-black dark:text-white bg-white dark:bg-gray-800 shadow-lg">
+        <option value="lectures">Lectures</option>
+        <option value="notes" selected>Notes</option>
+        <option value="dpps">DPPs</option>
+        <option value="dppVideos">DPP Videos</option>
+      </select>
+    </div>
+  </header>
+
+  <main class="p-4">
+    <div id="contentArea" class="grid gap-4 max-w-2xl mx-auto"></div>
+  </main>
+
+  <script>
+    const contentData = {
+      lectures: [
+        {
+          title: "Units & Measurements 01 : Lamis Theorem || ( No DPP )",
+          video: "https://www.youtube.com/embed/YOUR_VIDEO_ID_1"
+        },
+        {
+          title: "Units & Measurements 02 : AaRAv OffiCiaL",
+          video: "https://www.youtube.com/embed/YOUR_VIDEO_ID_2"
+        }
+      ],
+      notes: [
+        { title: "Units & Measurements 01 : Class Notes || Physics : MR Sir", pdf: "notes/aarav01.pdf" },
+        { title: "Units & Measurements 02 : Class Notes || Physics : MR Sir", pdf: "notes/aarav02.pdf" },
+        { title: "Units & Measurements 03 : Class Notes || Physics : MR Sir", pdf: "notes/aarav03.pdf" },
+        { title: "Units & Measurements 04 : Class Notes || Physics : MR Sir", pdf: "notes/aarav04.pdf" },
+        { title: "Units & Measurements 05 : Class Notes || Physics : MR Sir", pdf: "notes/aarav05.pdf" },
+        { title: "Units & Measurements 06 : Class Notes || Physics : MR Sir", pdf: "notes/aarav06.pdf" },
+        { title: "Units & Measurements 07 : Class Notes || Physics : MR Sir", pdf: "notes/aarav07.pdf" },
+        { title: "Units & Measurements 08 : Class Notes || Physics : MR Sir", pdf: "notes/aarav08.pdf" }
+      ],
+      dpps: [
+        { title: "Units & Measurements : DPP 01 (of lec-02) || Physics : MR Sir", pdf: "dpp/dpp01.pdf" },
+        { title: "Units & Measurements : DPP 02 (of lec-03) || Physics : MR Sir", pdf: "dpp/dpp02.pdf" },
+        { title: "Units & Measurements : DPP 03 (of lec-05) || Physics : MR Sir", pdf: "dpp/dpp03.pdf" },
+        { title: "Units & Measurements : DPP 04 (of lec-07) || Physics : MR Sir", pdf: "dpp/dpp04.pdf" },
+        { title: "Units & Measurements : DPP 05 (of lec-08) || Physics : MR Sir", pdf: "dpp/dpp05.pdf" }
+      ],
+      dppVideos: [
+        {
+          title: "DPP 01 Discussion - Vectors",
+          video: "https://www.youtube.com/embed/YOUR_VIDEO_ID_3"
+        }
+      ]
+    };
+
+    function renderContent() {
+      const type = document.getElementById("contentSelect").value;
+      const keyword = document.getElementById("searchBar").value.toLowerCase();
+      const area = document.getElementById("contentArea");
+      area.innerHTML = "";
+
+      contentData[type].forEach(item => {
+        if (!item.title.toLowerCase().includes(keyword)) return;
+
+        let card = document.createElement("div");
+        card.className = "p-4 bg-white dark:bg-gray-800 rounded shadow-lg flex justify-between items-center";
+
+        if (item.video) {
+          card.innerHTML = `
+            <div class="w-full">
+              <p class="font-semibold mb-2">${item.title}</p>
+              <div class="aspect-w-16 aspect-h-9">
+                <iframe src="${item.video}" frameborder="0" allowfullscreen class="w-full rounded"></iframe>
+              </div>
+            </div>
+          `;
+        } else if (item.pdf) {
+          card.innerHTML = `
+            <a href="${item.pdf}" target="_blank" class="flex-1 font-medium hover:underline">${item.title}</a>
+            <a href="${item.pdf}" download class="ml-4 text-purple-700 neon-download px-3 py-1 rounded-full">⬇️</a>
+          `;
+        }
+
+        area.appendChild(card);
+      });
+    }
+
+    function filterContent() {
+      renderContent();
+    }
+
+    function toggleDarkMode(e) {
+      const body = document.getElementById('themeBody');
+      const x = e.clientX || window.innerWidth / 2;
+      const y = e.clientY || window.innerHeight / 2;
+
+      body.style.setProperty('--ripple-x', `${x}px`);
+      body.style.setProperty('--ripple-y', `${y}px`);
+      body.classList.add('theme-ripple');
+
+      setTimeout(() => {
+        document.documentElement.classList.toggle('dark');
+        const btn = document.getElementById('themeToggle');
+        btn.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
+      }, 200);
+
+      setTimeout(() => {
+        body.classList.remove('theme-ripple');
+      }, 700);
+    }
+
+    renderContent();
+  </script>
+</body>
+      </html>
